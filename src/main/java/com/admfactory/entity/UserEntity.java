@@ -31,7 +31,7 @@ public class UserEntity implements Serializable {
 
     // uni-directional one-to-one association to UserDetailEntity
     @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id", insertable=false, updatable=false)
     private UserDetailEntity userDetail;
 
     public UserEntity() {

@@ -1,8 +1,6 @@
 package com.admfactory.entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * The persistent class for the user_detail database table.
@@ -11,19 +9,12 @@ import java.util.Date;
 @Entity
 @Table(name = "user_detail")
 @NamedQuery(name = "UserDetailEntity.findAll", query = "SELECT u FROM UserDetailEntity u")
-public class UserDetailEntity implements Serializable {
+public class UserDetailEntity extends BaseEntity {
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
     private String address;
 
     private String city;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -31,19 +22,10 @@ public class UserDetailEntity implements Serializable {
     @Column(name = "postal_code")
     private String postalCode;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated;
 
     public UserDetailEntity() {
     }
 
-    public long getId() {
-	return this.id;
-    }
-
-    public void setId(long id) {
-	this.id = id;
-    }
 
     public String getAddress() {
 	return this.address;
@@ -61,14 +43,6 @@ public class UserDetailEntity implements Serializable {
 	this.city = city;
     }
 
-    public Date getCreated() {
-	return this.created;
-    }
-
-    public void setCreated(Date created) {
-	this.created = created;
-    }
-
     public String getPhoneNumber() {
 	return this.phoneNumber;
     }
@@ -83,14 +57,6 @@ public class UserDetailEntity implements Serializable {
 
     public void setPostalCode(String postalCode) {
 	this.postalCode = postalCode;
-    }
-
-    public Date getUpdated() {
-	return this.updated;
-    }
-
-    public void setUpdated(Date updated) {
-	this.updated = updated;
     }
 
 }

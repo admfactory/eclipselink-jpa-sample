@@ -1,8 +1,6 @@
 package com.admfactory.entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * The persistent class for the user database table.
@@ -11,15 +9,8 @@ import java.util.Date;
 @Entity
 @Table(name = "user")
 @NamedQuery(name = "UserEntity.findAll", query = "SELECT u FROM UserEntity u")
-public class UserEntity implements Serializable {
+public class UserEntity extends BaseEntity {
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
 
     private String email;
 
@@ -27,30 +18,12 @@ public class UserEntity implements Serializable {
 
     private String password;
 
-    private long updated;
-
     // uni-directional one-to-one association to UserDetailEntity
     @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", insertable=false, updatable=false)
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private UserDetailEntity userDetail;
 
     public UserEntity() {
-    }
-
-    public long getId() {
-	return this.id;
-    }
-
-    public void setId(long id) {
-	this.id = id;
-    }
-
-    public Date getCreated() {
-	return this.created;
-    }
-
-    public void setCreated(Date created) {
-	this.created = created;
     }
 
     public String getEmail() {
@@ -75,14 +48,6 @@ public class UserEntity implements Serializable {
 
     public void setPassword(String password) {
 	this.password = password;
-    }
-
-    public long getUpdated() {
-	return this.updated;
-    }
-
-    public void setUpdated(long updated) {
-	this.updated = updated;
     }
 
     public UserDetailEntity getUserDetail() {
